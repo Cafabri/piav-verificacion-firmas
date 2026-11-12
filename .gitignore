@@ -1,0 +1,13 @@
+# Base de datos CEDAR (proporcionada en el Campus Virtual, no se redistribuye)
+data/
+
+# Enunciado y capturas del Campus Virtual
+Practica_firmas.pdf
+Captura de pantalla*.png
+
+# Cachés que se regeneran al ejecutar el notebook
+cache_*.npy
+
+# Python / Jupyter
+__pycache__/
+.ipynb_checkpoints/
