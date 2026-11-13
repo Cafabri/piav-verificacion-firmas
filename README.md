@@ -10,7 +10,7 @@ Práctica de **Procesamiento de Imágenes, Audio y Vídeo (PIAV)**, Grado en Cie
 
 **Planteamiento.** De cada firma sacamos estas medidas: la densidad de tinta, la proporción entre ancho y alto, la posición del centro de la firma (horizontal y vertical), el número de trazos sueltos (componentes conexas), tres momentos de Hu que describen la forma global, el reparto de la tinta en los cuatro cuadrantes y la inclinación. En total son 13 valores por firma. Con las 10 firmas de referencia vemos cómo suelen ser esas medidas para cada persona. Si una firma nueva se parece lo suficiente, la aceptamos.
 
-**Umbral.** Usaremos un único umbral global, el mismo para todos los usuarios. Lo fijaremos con los 30 usuarios de desarrollo en el punto en el que la FAR y la FRR son iguales (el punto del EER). Después no lo tocaremos, ni en evaluación ni con los usuarios nuevos de la prueba final. Si una firma tiene una puntuación igual o mayor que el umbral, la aceptamos; si no, la rechazamos.
+**Umbral.** Usaremos un único umbral global, el mismo para todos los usuarios. Lo fijaremos con los 30 usuarios de desarrollo en el punto en el que la FAR y la FRR son iguales (el punto del EER). Para encontrarlo, puntuaremos todas las firmas de prueba de los usuarios de desarrollo, calcularemos la FAR y la FRR para cada umbral posible y nos quedaremos con el valor en el que ambas coinciden. Después no lo tocaremos, ni en evaluación ni con los usuarios nuevos de la prueba final. Si una firma tiene una puntuación igual o mayor que el umbral, la aceptamos; si no, la rechazamos.
 
 **Qué esperamos.**
 - Que funcione, pero con bastante error: un **EER de entre el 15 % y el 25 %**.
