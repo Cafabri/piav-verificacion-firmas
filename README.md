@@ -17,8 +17,6 @@ Práctica de **Procesamiento de Imágenes, Audio y Vídeo (PIAV)**, Grado en Cie
 - Que le cueste distinguir las **falsificaciones hábiles**. Quien falsifica imita bien el aspecto general de la firma, y ese aspecto general es lo único que miden nuestras características. Por eso muchas falsificaciones van a parecer genuinas para el sistema.
 - Que, al usar el mismo umbral para todos, la **FAR y la FRR salgan algo descompensadas** en evaluación, ya que no todo el mundo firma igual de regular.
 
-**Por qué.** Lo que de verdad delata a un falsificador está en los detalles del trazo: va más lento, le tiembla la mano y la línea no tiene el mismo grosor. Nuestras medidas no recogen nada de eso. Además, con solo 5 medidas generales, firmas bastante distintas pueden dar valores parecidos.
-
 **Cómo lo comprobamos.** Con el EER y la curva DET de los usuarios de evaluación, y con la FAR y la FRR que salen usando el umbral fijado en desarrollo.
 
 ### Hipótesis 2: sistema de aprendizaje automático
