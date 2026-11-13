@@ -10,6 +10,8 @@ Práctica de **Procesamiento de Imágenes, Audio y Vídeo (PIAV)**, Grado en Cie
 
 **Planteamiento.** De cada firma sacamos estas medidas: la densidad de tinta, la proporción entre ancho y alto, la posición del centro de la firma (horizontal y vertical), el número de trazos sueltos (componentes conexas), tres momentos de Hu que describen la forma global, el reparto de la tinta en los cuatro cuadrantes y la inclinación. En total son 13 valores por firma. Con las 10 firmas de referencia vemos cómo suelen ser esas medidas para cada persona. Si una firma nueva se parece lo suficiente, la aceptamos.
 
+**Umbral.** Usaremos un único umbral global, el mismo para todos los usuarios. Lo fijaremos con los 30 usuarios de desarrollo en el punto en el que la FAR y la FRR son iguales (el punto del EER). Después no lo tocaremos, ni en evaluación ni con los usuarios nuevos de la prueba final. Si una firma tiene una puntuación igual o mayor que el umbral, la aceptamos; si no, la rechazamos.
+
 **Qué esperamos.**
 - Que funcione, pero con bastante error: un **EER de entre el 15 % y el 25 %**.
 - Que le cueste distinguir las **falsificaciones hábiles**. Quien falsifica imita bien el aspecto general de la firma, y ese aspecto general es lo único que miden nuestras características. Por eso muchas falsificaciones van a parecer genuinas para el sistema.
@@ -21,12 +23,20 @@ Práctica de **Procesamiento de Imágenes, Audio y Vídeo (PIAV)**, Grado en Cie
 
 ### Hipótesis 2: sistema de aprendizaje automático
 
-**Planteamiento.** En vez de elegir nosotros las medidas, una red neuronal aprende sola a describir las firmas a partir de los usuarios de desarrollo. Después comparamos cada firma con las 10 de referencia de su usuario.
+**Artículo.** Vamos a intentar replicar una versión simplificada de SigNet:
+
+> Hafemann, L. G., Sabourin, R., & Oliveira, L. S. (2017). Learning features for offline handwritten signature verification using deep convolutional neural networks. *Pattern Recognition, 70*, 163–176. https://doi.org/10.1016/j.patcog.2017.05.012
+
+En el artículo entrenan una red neuronal convolucional para que aprenda a reconocer quién ha hecho cada firma. Una vez entrenada, le quitan la última capa y la usan para convertir cualquier firma en un vector de características, incluso de personas que la red no ha visto nunca.
+
+**Planteamiento.** En vez de entrenar una red desde cero como en el artículo, partiremos de una red ya preentrenada (ResNet18) y la ajustaremos con los usuarios de desarrollo para que aprenda a distinguir quién firma. Después la usaremos para sacar el vector de características de cada firma. Para decidir, en lugar de entrenar un clasificador por usuario como hace el artículo, compararemos cada firma con sus 10 de referencia mediante la similitud coseno. El hiperparámetro que estudiaremos es el número de épocas de entrenamiento.
+
+**Umbral.** Igual que en el paramétrico: un único umbral global, fijado con usuarios de desarrollo en el punto del EER y sin cambiarlo después.
 
 **Qué esperamos.**
 - Que **funcione mejor que el paramétrico**, con un EER más bajo.
 - Que, al tener pocos usuarios para entrenar, la red **se aprenda demasiado bien a esos usuarios** y funcione peor con los nuevos.
-- Que con el hiperparámetro (por ejemplo, las épocas) el error **baje al principio y luego se estanque o empeore**, de modo que el mejor valor sea uno intermedio.
+- Que, al aumentar el número de épocas, el error **baje al principio y luego se estanque o empeore**, de modo que el mejor valor sea uno intermedio.
 
 **Por qué.** La red puede fijarse en detalles del trazo que un falsificador no consigue imitar y que nosotros no sabríamos medir a mano.
 
