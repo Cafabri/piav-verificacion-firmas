@@ -16,28 +16,3 @@ Práctica de **Procesamiento de Imágenes, Audio y Vídeo (PIAV)**, Grado en Cie
 **Por qué.** Lo que de verdad delata a un falsificador está en los detalles del trazo: va más lento, le tiembla la mano y la línea no tiene el mismo grosor. Nuestras medidas no recogen nada de eso. Además, 10 firmas son pocas para saber cuánto varía cada persona al firmar.
 
 **Cómo lo comprobamos.** Con el EER y la curva DET de los usuarios de evaluación, y con la FAR y la FRR que salen usando el umbral fijado en desarrollo.
-
-## Resultados (usuarios de evaluación 31–43)
-
-| Sistema | EER | FAR (umbral fijo) | FRR (umbral fijo) |
-|---|---|---|---|
-| Paramétrico OpenCV | 16,0 % | 12,2 % | 18,7 % |
-
-## Estructura
-
-| Archivo | Contenido |
-|---|---|
-| `practica_firmas.ipynb` | Notebook: datos y protocolo, funciones de evaluación biométrica y sistema paramétrico |
-
-## Ejecución
-
-1. Descargar la base de datos del Campus Virtual y descomprimirla así:
-   ```
-   data/genuinas/full_org/full_org/original_<usuario>_<n>.png
-   data/falsificadas/full_forg/full_forg/forgeries_<usuario>_<n>.png
-   ```
-2. Instalar las dependencias:
-   ```
-   pip install opencv-python numpy pandas scipy matplotlib
-   ```
-3. Ejecutar `practica_firmas.ipynb` de principio a fin.
