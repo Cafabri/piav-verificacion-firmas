@@ -1,9 +1,3 @@
-# Verificación de firmas manuscritas offline
-
-Práctica de **Procesamiento de Imágenes, Audio y Vídeo (PIAV)**, Grado en Ciencia e Ingeniería de Datos.
-
-**Sistema paramétrico con OpenCV** sobre la base de datos **CEDAR**: preprocesado sencillo (filtro de mediana, Otsu y recorte), 5 características (densidad de tinta, relación ancho/alto, centro de la firma en horizontal y en vertical, y componentes conexas) y una puntuación basada en la distancia de cada firma a la firma media del usuario, con un umbral global fijado en desarrollo.
-
 ## Hipótesis
 
 ### Hipótesis 1: sistema paramétrico (OpenCV)
